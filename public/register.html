@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <div class="parent-form">
+        <div class="login-form">
+            <h2>Register</h2> <!-- Heading added here -->
+            <form id="registerForm">
+                <input id="name" name="name" type="text" placeholder="Name" required>
+                <input id="email" name="email" type="email" placeholder="Enter Email" required>
+                <input id="password" name="password" type="password" placeholder="Enter Password" required>
+                <div id="messageBox">
+                    
+                    <p id="ok-msg" class="hide">User registered.</p>
+                </div>
+                <button class="register" type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+    <script src="./register.js"></script>
+</body>
+
+</html>

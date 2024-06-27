@@ -1,0 +1,359 @@
+/* Container for the list of books */
+
+/* body {
+    background-color: #f0f4f8; 
+    font-family: Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+body {
+    background: linear-gradient(to right, #e0c3fc, #8ec5fc); /* Light purple to light blue gradient */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#booksList {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Individual book item */
+.child-books {
+    height: 450px;
+    width: 300px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    animation: box 3s ease-in-out 0s 1 normal;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.child-books:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Buttons styling */
+.getbook-btn, .updatebook-btn, .deletebook-btn {
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin: 10px 0;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.getbook-btn {
+    background-color: #00bfff;
+}
+
+.getbook-btn:hover {
+    background-color: #0099cc;
+}
+
+.updatebook-btn {
+    background-color: #ff6347;
+}
+
+.updatebook-btn:hover {
+    background-color: #e5533c;
+}
+
+.deletebook-btn {
+    background-color: #ff0000;
+}
+
+.deletebook-btn:hover {
+    background-color: #cc0000;
+}
+
+.close-button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Modal styling */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.content, .update-content, .add-content {
+    position: relative;
+    background: white;
+    padding: 2em;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Show modal */
+.show {
+    display: flex;
+}
+
+
+/* User Info Container */
+#userInfo {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* User Info Header */
+#userInfo h2 {
+    margin: 0;
+    padding-bottom: 10px;
+    font-size: 1.8em;
+    color: #333;
+    border-bottom: 2px solid #ddd;
+}
+
+/* Optional: Add hover effects for user info */
+#userInfo:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Container to center the button */
+#button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+}
+
+/* Add Book Button */
+#add-book {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover State */
+#add-book:hover {
+    background-color: #218838;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Active State */
+#add-book:active {
+    background-color: #1e7e34;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Focus State */
+#add-book:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.5);
+}
+
+
+
+
+
+
+/* adding book form  */
+
+/* Overlay background */
+#add-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it appears above other content */
+    opacity: 0; /* Initially transparent */
+    transition: opacity 0.3s ease-in-out; /* Transition effect */
+    visibility: hidden; /* Initially hidden */
+}
+
+/* Popup content */
+.add-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px; /* Maximum width of the popup */
+    text-align: center; /* Center text inside the popup */
+}
+
+/* Form elements styling */
+#add-book-form label {
+    display: block;
+    margin: 10px 0 5px;
+    text-align: left;
+}
+
+#add-book-form input[type="text"] {
+    width: calc(100% - 20px); /* Adjusting width for padding */
+    padding: 10px;
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#add-btn, .close-add-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#add-btn {
+    background-color: green;
+    color: white;
+}
+
+#add-btn:hover {
+    background-color: darkgreen;
+}
+
+.close-add-button {
+    background-color: red;
+    color: white;
+    margin-left: 10px; /* Adding some space between buttons */
+}
+
+.close-add-button:hover {
+    background-color: darkred;
+}
+
+/* Show the popup when active */
+#add-popup.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* 
+update book form */
+
+/* Overlay background */
+#update-popup-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Ensure it appears above other content */
+    opacity: 0; /* Initially transparent */
+    transition: opacity 0.3s ease-in-out; /* Transition effect */
+    visibility: hidden; /* Initially hidden */
+}
+
+/* Popup content */
+.update-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 500px; /* Maximum width of the popup */
+    text-align: center; /* Center text inside the popup */
+}
+
+/* Form elements styling */
+#update-book-form label {
+    display: block;
+    margin: 10px 0 5px;
+    text-align: left;
+}
+
+#update-book-form input[type="text"] {
+    width: calc(100% - 20px); /* Adjusting width for padding */
+    padding: 10px;
+    margin: 5px 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#update-book-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+#update-book-form button[type="submit"] {
+    background-color: green;
+    color: white;
+}
+
+#update-book-form button[type="submit"]:hover {
+    background-color: darkgreen;
+}
+
+.close-update-button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close-update-button:hover {
+    background-color: darkred;
+}
+
+/* Show the popup when active */
+#update-popup-box.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+
+

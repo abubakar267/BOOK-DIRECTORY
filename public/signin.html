@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="signin.css">
+</head>
+
+<body>
+    <div class="parent-form">
+        <div class="login-form">
+            <h2>Login</h2> <!-- Heading added here -->
+            <form id="loginForm">
+                <input id="email" name="email" type="text" placeholder="Enter Email" required>
+                <input id="password" name="password" type="password" placeholder="Enter Password" required>
+                <div id="messageBox">
+                    <p id="ok-msg" class="hide">User registered.</p>
+                </div>
+                <button class="login" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="signin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+/* Body and general styling */
+body {
+    background: linear-gradient(to right, #e0c3fc, #8ec5fc); /* Light purple to light blue gradient */
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container for the form */
+.parent-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+/* Form container styling */
+.login-form {
+    background-color: #fff; /* White background */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft box shadow */
+    padding: 30px;
+    width: 400px; /* Fixed width for the form */
+    max-width: 90%; /* Maximum width to adjust on smaller screens */
+    text-align: center;
+}
+
+/* Heading styling */
+.login-form h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333; /* Dark gray text color */
+}
+
+/* Input field styling */
+.login-form input[type="text"],
+.login-form input[type="email"],
+.login-form input[type="password"] {
+    width: calc(100% - 20px); /* Adjusting width for padding */
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px; /* Font size */
+}
+
+/* Button styling */
+.login-form button.register {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.login-form button.register:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .login-form {
+        width: 90%;
+    }
+}
+
+.hide{
+    visibility: hidden;
+}
+
+
+#messageBox p{
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+
