@@ -1,3 +1,6 @@
+To see the pictures of project go to the demo directory :).
+  
+  
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.4.5",
